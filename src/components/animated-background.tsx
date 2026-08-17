@@ -1,9 +1,9 @@
 "use client";
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Application, SPEObject, SplineEvent } from "@splinetool/runtime";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-const Spline = React.lazy(() => import("@splinetool/react-spline"));
+import Spline from "@splinetool/react-spline/next";
 import { Skill, SkillNames, SKILLS } from "@/data/constants";
 import { sleep } from "@/lib/utils";
 import { useMediaQuery } from "@/hooks/use-media-query";
@@ -480,17 +480,16 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
   }, [splineApp]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Spline
-        className="w-full h-full fixed"
-        ref={splineContainer}
-        onLoad={(app: Application) => {
-          setSplineApp(app);
-          bypassLoading();
-        }}
-        scene="/assets/skills-keyboard.spline"
-      />
-    </Suspense>
+      <div ref={splineContainer} className="w-full h-full fixed">
+        <Spline
+          className="w-full h-full"
+          onLoad={(app: Application) => {
+            setSplineApp(app);
+            bypassLoading();
+          }}
+          scene="https://prod.spline.design/skillskeyboard-TjlOLFFDgcIFqhjBZRUFcxQ4/scene.splinecode"
+        />
+      </div>
   );
 };
 
