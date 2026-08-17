@@ -488,7 +488,7 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
           setSplineApp(app);
           bypassLoading();
         }}
-        scene="https://my.spline.design/skillskeyboard-TjlOLFFDgcIFqhjBZRUFcxQ4/"
+        scene="/assets/skills-keyboard.spline"
       />
     </Suspense>
   );
